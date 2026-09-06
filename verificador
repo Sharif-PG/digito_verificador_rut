@@ -1,1 +1,42 @@
+rut = str(input("Ingresar RUT (sin verificador): "))
+rut_invertido = rut[::-1]
+
+print(f"Tu RUT invertido queda: {rut_invertido}")
+
+resultado = 0
+
+multiplicador = 2
+
+for i in rut_invertido:
+    cifra = int(i)
+    resultado = resultado + (cifra * multiplicador)
+    multiplicador += 1
+    if multiplicador == 8:
+        multiplicador = multiplicador - 6
+
+print(f"El resultado de las multiplicaciones sumadas es {resultado}")
+
+calculo_verificador = (resultado % 11) - 11
+
+digito_verificador = None
+
+rut_final = None
+
+if calculo_verificador == -11:
+    print("Tu dígito verificador es = 0")
+    digito_verificador = "-0"
+    rut_final = rut + str(digito_verificador)
+elif calculo_verificador == -10:
+    print("Tu dígito verificador es = k")
+    digito_verificador = "-k"
+    rut_final = rut + str(digito_verificador)
+else:
+    print(f"Tu dígito verificador es = {calculo_verificador}")
+    rut_final = rut + str(calculo_verificador)
+
+
+
+print(f"Por lo tanto, tu RUT completo es: {rut_final}")
+
+
 
